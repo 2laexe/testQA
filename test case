@@ -1,0 +1,91 @@
+- summary: |
+    Проверка успешного логина с корректными данными.
+  requirement: |
+    Форма логина должна позволять авторизацию при правильном вводе email и пароля.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    Email: valid@gmail.com
+    Password: Password123
+  steps:
+    - Ввести "valid@gmail.com" в поле "Username".
+    - Ввести "Password123" в поле "Password".
+    - Нажать кнопку "Login".
+  expected-result: |
+    Успешная авторизация, редирект на главную страницу пользователя.
+
+- summary: |
+    Проверка логина с некорректным email.
+  requirement: |
+    Поле "Username" должно принимать только email-адреса.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    Email: validgmail.com
+    Password: Password123
+  steps:
+    - Ввести "usernamegmail.com" в поле "Username".
+    - Ввести "Password123" в поле "Password".
+    - Проверить состояние кнопки "Login".
+  expected-result: |
+    Кнопка "Login" не активна.
+
+- summary: |
+    Проверка логина с пустым полем "Username".
+  requirement: |
+    Поле "Username" является обязательным для заполнения.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    Password: Password123
+  steps:
+    - Оставить поле "Username" пустым.
+    - Ввести "Password123" в поле "Password".
+    - Проверить состояние кнопки "Login".
+  expected-result: |
+    Кнопка "Login" не активна.
+
+- summary: |
+    Проверка логина с пустым полем "Password".
+  requirement: |
+    Поле "Password" является обязательным для заполнения.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    Email: valid@gmail.com
+  steps:
+    - Ввести "valid@gmail.com" в поле "Username".
+    - Оставить поле "Password" пустым.
+    - Проверить состояние кнопки "Login".
+  expected-result: |
+    Кнопка "Login" не активна.
+
+- summary: |
+    Проверка логина с паролем длиной менее 8 символов.
+  requirement: |
+    Поле "Password" должно содержать не менее 8 символов.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    Email: valid@gmail.com
+    Password: qwerty
+  steps:
+    - Ввести "valid@gmail.com" в поле "Username".
+    - Ввести "qwerty" в поле "Password".
+    - Проверить состояние кнопки "Login".
+  expected-result: |
+    Кнопка "Login" не активна.
+
+- summary: |
+    Проверка логина с пустыми полями "Username" и "Password".
+  requirement: |
+    Оба поля должны быть обязательными для заполнения.
+  prerequisites:
+    Открыта страница логина.
+  test-data: |
+    no data
+  steps:
+    - Оставить поля "Username" и "Password" пустыми.
+    - Проверить состояние кнопки "Login".
+  expected-result: |
+    Кнопка "Login" не активна.
